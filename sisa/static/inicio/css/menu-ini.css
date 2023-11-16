@@ -1,0 +1,114 @@
+.panelini {
+position:right;
+width:420px;
+height:60px;
+float:left;
+border-color: #999;
+border-radius: 10px;
+}
+
+#sc-HeaderTop {
+display: inline-block;
+width:90%;
+height:50%;
+margin: 0;
+padding: 0;
+text-align: left;
+}
+#jv-mainmenu{
+	width: 1000px;
+	margin: 0 auto;
+	padding: 0;
+	clear: both;
+}
+
+#navigation {
+	margin:0;
+	padding: 0;
+	clear:both;
+	width:100%;
+	height:100%;
+    border-radius:2px ;
+}
+
+ul.nav-main, ul.nav-main li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.nav-main {
+	position: relative;
+	z-index: 597;
+       
+}
+
+ul.nav-main li:hover > ul {
+	visibility: visible;
+}
+
+ul.nav-main li.hover, ul.nav-main li:hover {
+	position: relative;
+	z-index: 599;
+	cursor: pointer;
+	/* background: url(../images/dropdown-bg-hover.gif) repeat-x left top; */
+}
+
+ul.nav-main li {
+	float:left;
+	display:block;
+	height: 51px;
+	color: #999;
+	font: 14px Arial, Helvetica, sans-serif;
+}
+
+ul.nav-main li a {
+	display:block;
+	padding: 5px 8px 8px 8px;
+	height: 35px;
+	color: #999;
+    #color:#fff;
+    color:black;
+	font: 16px Arial, Helvetica, sans-serif;
+	text-decoration:none;
+}
+
+ul.nav-main li a:hover {
+	color:#D6D6D6;
+}
+
+ul.nav-main *.list {
+	padding-right: 22px;
+}
+
+.menuflia {
+background-color: coral;
+height: 100%;
+border: 1px solid #000000;
+width:15%;
+min-width:100px;
+min-height:25px;
+height:100%;
+border-radius: 3px ;
+background-color:#F5F5F5;
+border: 1px solid blue;
+float:left;
+align-items: right;
+justify-content: right;
+margin-left: auto;
+margin-right: auto;
+border-color: transparent;
+}
+.divtitulo {
+width:380px;
+height:30px;
+}
+.lbltitulo {
+width:370px;
+height:30px;
+}
+@media only screen and (max-device-width : 600px)  {
+.panelini {
+        width: 100vw;
+    }
+}
