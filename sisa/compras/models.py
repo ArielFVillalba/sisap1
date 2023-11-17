@@ -1,17 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import User
 
 from django.db import models
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
-
-from inicio.models import *
-
-from django.contrib.auth.models import User
-from django.utils import timezone
 
 
-class Proveedor(audit):
+class Proveedor(models.Model):
     idproveedor = models.AutoField(primary_key=True)
     nombre = models.TextField()
     cedula = models.TextField(blank=True, null=True)
@@ -34,7 +25,7 @@ class Proveedor(audit):
 
 
 
-class Compracab(audit):
+class Compracab(models.Model):
     idcompracab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nrofactura = models.TextField()
@@ -61,7 +52,7 @@ class Compracab(audit):
         db_table = 'compra_cab'
 
 
-class Compradet(audit):
+class Compradet(models.Model):
     idcompradet = models.AutoField(primary_key=True)
     idcompracab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -80,7 +71,7 @@ class Compradet(audit):
         db_table = 'compra_det'
 
 
-class Comprascuotas(audit):
+class Comprascuotas(models.Model):
     idcomprascuotas = models.AutoField(primary_key=True)
     idcompracab = models.DecimalField(max_digits=20, decimal_places=0)
     idproveedor = models.DecimalField(max_digits=20, decimal_places=0)
@@ -95,7 +86,7 @@ class Comprascuotas(audit):
         db_table = 'comprascuotas'
 
 
-class Pagoproveedor(audit):
+class Pagoproveedor(models.Model):
     idpagoproveedor = models.AutoField(primary_key=True)
     fecha = models.DateField()
     recibo = models.TextField()
@@ -105,7 +96,7 @@ class Pagoproveedor(audit):
     class Meta:
         db_table = 'pagoproveedor'
 
-class Pagoprovforma(audit):
+class Pagoprovforma(models.Model):
     idpagoprovforma = models.AutoField(primary_key=True)
     idpagoproveedor = models.DecimalField(max_digits=20, decimal_places=0)
     idtipopago = models.DecimalField(max_digits=20, decimal_places=0)
@@ -121,7 +112,7 @@ class Pagoprovforma(audit):
     class Meta:
         db_table = 'pagoprovforma'
 
-class Pagoprovfact(audit):
+class Pagoprovfact(models.Model):
     idpagoprovfact = models.AutoField(primary_key=True)
     idpagoproveedor = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -137,7 +128,7 @@ class Pagoprovfact(audit):
 
 
 
-class Ordencompcab(audit):
+class Ordencompcab(models.Model):
     idordencompcab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nroorden = models.TextField()
@@ -164,7 +155,7 @@ class Ordencompcab(audit):
         db_table = 'ordencomp_cab'
 
 
-class Ordencompdet(audit):
+class Ordencompdet(models.Model):
     idordencompdet = models.AutoField(primary_key=True)
     idordencompcab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -182,7 +173,7 @@ class Ordencompdet(audit):
         db_table = 'ordencomp_det'
 
 
-class Pedidocompcab(audit):
+class Pedidocompcab(models.Model):
     idpedidocompcab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nropedido = models.TextField()
@@ -209,7 +200,7 @@ class Pedidocompcab(audit):
         db_table = 'pedidocomp_cab'
 
 
-class Pedidocompdet(audit):
+class Pedidocompdet(models.Model):
     idpedidocompdet = models.AutoField(primary_key=True)
     idpedidocompcab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -227,7 +218,7 @@ class Pedidocompdet(audit):
         db_table = 'pedidocomp_det'
 
 
-class Presupuestocompcab(audit):
+class Presupuestocompcab(models.Model):
     idpresupuestocompcab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nropresupuesto = models.TextField()
@@ -254,7 +245,7 @@ class Presupuestocompcab(audit):
         db_table = 'presupestocomp_cab'
 
 
-class Presupuestocompdet(audit):
+class Presupuestocompdet(models.Model):
     idpresupuestocompdet = models.AutoField(primary_key=True)
     idpresupuestocompcab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -272,7 +263,7 @@ class Presupuestocompdet(audit):
         db_table = 'presupuestocomp_det'
 
 
-class Notacreditocompcab(audit):
+class Notacreditocompcab(models.Model):
     idnotacreditocompcab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nronota = models.TextField()
@@ -301,7 +292,7 @@ class Notacreditocompcab(audit):
         db_table = 'notacreditocomp_cab'
 
 
-class Notacreditocompdet(audit):
+class Notacreditocompdet(models.Model):
     idnotacreditocompdet = models.AutoField(primary_key=True)
     idnotacreditocompcab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
@@ -320,7 +311,7 @@ class Notacreditocompdet(audit):
         db_table = 'notacreditocomp_det'
 
 
-class Notadebitocompcab(audit):
+class Notadebitocompcab(models.Model):
     idnotadebitocompcab = models.AutoField(primary_key=True)
     fecha = models.DateField()
     nrodebito = models.TextField()
@@ -347,7 +338,7 @@ class Notadebitocompcab(audit):
         db_table = 'notadebitocomp_cab'
 
 
-class Notadebitocompdet(audit):
+class Notadebitocompdet(models.Model):
     idnotadebitocompdet = models.AutoField(primary_key=True)
     idnotadebitocompcab = models.DecimalField(max_digits=20, decimal_places=0)
     orden = models.DecimalField(max_digits=20, decimal_places=0, default=0)
