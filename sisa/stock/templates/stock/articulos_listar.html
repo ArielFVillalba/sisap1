@@ -1,0 +1,68 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% csrf_token %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{% static '/stock/stock/articulos.css' %}">
+<script src="{% static '/stock/stock/articulos.js' %}"></script>
+<script src="{% static '/js/sweetalert2.all.min.js' %}"></script>
+<script src="{% static '/inicio/js/principal.js' %}"></script>
+</head>
+<body onload="actelementos(), procesarfun()">
+	<div id="articuloscab"  class="articuloscab" >
+	<div  id="articlulobtncab"  class="articlulobtncab" >
+			<a class="btn" href="{% url 'articulos_crear' %}" >RETORNAR</a>
+    </div>
+	<div  id="articlulotitcab"  class="articlulotitcab" >  LISTADO DE ARTICULOS  </div>
+    </div>
+<div>
+<div  class="articuloscab" >
+	<div  class="celdatxtbuscar" > <input type="text" id="idbuscar" name="idbuscar" class="buscar_art" value="{{ cadena }}"> <br> </div>
+    <div  class="articlulobtncab" > <button class="btn" onClick="buscararticulo()" >  BUSCAR  </button> </div>
+ </div>
+
+    <div class="columna" id="columna" >
+    <div class="columnalst" id="columnalst" >
+
+    <div class="columnalst1"  class="columnalst1" >
+    <div class ="celdalistadolt" >CODIGO </div>
+    <div class ="celdalistadoltl" >DESCRIPCION</div>
+    <div class ="celdalistadolt" >PRECIO </div>
+    </div>
+
+    <div class="columnalst2">
+    <div class ="celdalistadoft" >FLIA. 1 </div>
+    <div class ="celdalistadoft" >FLIA. 2</div>
+    <div class ="celdalistadoft" >FLIA. 3 </div>
+    </div>
+
+    </div>
+{% for articulo in articulos %}
+    <div class="columnalst"  >
+    <div class="columnalst1"  class="columnalst1" >
+    <div class ="celdalistado" > {{ articulo.codigo }}</div>
+    <div class ="celdalistadol" > {{ articulo.descripcion }}</div>
+    <div class ="celdalistado" > {{ articulo.precio }}</div>
+    </div>
+
+    <div class="columnalst2"  >
+    <div class ="celdalistadof" > {{ articulo.familia1 }}</div>
+    <div class ="celdalistadof" > {{ articulo.familia2 }}</div>
+    <div class ="celdalistadof" > {{ articulo.familia3 }}</div>
+   </div>
+   <div class="columnalst3"  >
+        <a href="{% url 'articulos_cargar' pk_token=articulo.pka %}">
+        <button class="btnlstm">cargar</button>
+        </a>
+   </div>
+   </div>
+
+{% endfor %}
+</div> <! columna >
+
+{% endblock %}
+</body>
+</html>
+

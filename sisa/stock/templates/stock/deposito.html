@@ -1,0 +1,56 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% csrf_token %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<script src="{% static '/js/sweetalert2.all.min.js' %}"></script>
+<script src="{% static '/inicio/js/principal.js' %}"></script>
+<link rel="stylesheet" href="{% static '/stock/stock/deposito.css' %}">
+<script src="{% static '/stock/stock/deposito.js' %}"></script>
+
+</head>
+<body onload="actelementos(),busdetalle()" >
+	<div id="depositoscab"  class="depositoscab" >
+        <div  id="depositobtncab"  class="depositobtncab" >
+                <a class="btn" href="{% url 'menustock' %}" >RETORNAR</a>
+        </div>
+	    <div  id="depositotitcab"  class="depositotitcab" >  DEPOSITO  </div>
+    </div>
+
+{% csrf_token %}
+    <div class ="columna0" >
+
+    <div class ="columna1" >
+    <div class ="campot" >DEPOSITO </div>
+    <div class ="campot" >SUCURSAL</div>
+    </div>
+    <div class ="columna1" >
+    <div class ="campo1" ><input type="text"  id="id_deposito"   > </div>
+    <div class ="campo1" ><input type="text"  id="id_sucursal"   > </div>
+    </div>
+
+    <div class ="columna1" >
+    <div class ="campo2" >
+    <button class="btn"   onClick="nuevo()">nuevo</button>
+    <button class="btn"   onClick="actualizar_dep()">actualizar</button>
+    <button class="btn"  onClick="eliminar_dep()">eliminar</button> </div>
+
+    </div>
+    </div>
+
+    <div class ="columna1" >
+    <div class ="campot" >DEPOSITO </div>
+    <div class ="campot" >SUCURSAL</div>
+    </div>
+
+     		<div id="listadodet" class="listadodet">
+			<ul id="deposito-list">
+
+			</ul>
+		</div>
+{% endblock %}
+</body>
+</html>
+

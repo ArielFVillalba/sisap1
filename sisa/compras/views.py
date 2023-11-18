@@ -1,47 +1,32 @@
-from django.contrib.auth import authenticate, logout, login
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect , get_object_or_404, redirect
+from django.template import context
+
+from .forms import *
+from django.apps import AppConfig
+from django.apps import AppConfig
+
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+
+con1=1
 
 # Create your views here.
-from django.http import HttpResponse
-
-def hola_mundo(request):
-    return HttpResponse("¡Hola Mundo en Django!")
-
-
-def loginc(request):
-
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-
-            user_permissions = user.user_permissions.all()
-            valor=str(user.last_login)+str(user.username)+str(user.password)
-            #print(str(valor))
-
-            # Imprime los permisos
-            # for permission in user_permissions:
-            #  print(permission)
-            #usuario = request.user
-            #user = request.user
-
-            return render(request, 'menu.html')
-        else:
-            errors = "Invalid login credentials."
-            return render(request, 'login.html', {'messages': errors})
-
+def infrendprov(request):
+    if request.user.is_authenticated:
+        return render(request, "informeprov/infrendprov.html")
     else:
-        errors = ""
-        if request.user.is_authenticated:
-            logout(request)
-
-        titulo= "INICIAR SESION"
-    return render(request, 'login.html', {'messages': errors, 'title':titulo})
+        return redirect('login')
 
 
-    return render(request, 'login.html', {'messages': ''})
+def menucompras(request):
+    if request.user.is_authenticated:
+        return render(request, 'compras/menucompras.html')
+    else:
+        return redirect('login')
 
-def menu(request):
-    return render(request, "menu.html")
+def menuproveedor(request):
+    if request.user.is_authenticated:
+        return render(request, 'compras/menuproveedor.html')
+    else:
+        return redirect('login')
+

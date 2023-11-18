@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inicio',
     'compras',
+    'ventas',
+    'stock',
+
+
 
 ]
 
@@ -85,6 +90,18 @@ DATABASES = {
     }
 }
 
+
+
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'sisa',
+       'USER': 'root',
+       'PASSWORD': 'sisa',
+       'HOST': 'localhost',  # O la dirección de tu servidor MySQL
+       'PORT': '3307',        # O el puerto que estás utilizando
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

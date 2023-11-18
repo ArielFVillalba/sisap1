@@ -1,0 +1,24 @@
+{% load static %}
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static '/inicio/css/menul.css' %}">
+<link rel="stylesheet" href="{% static '/inicio/css/menu-ini.css' %}">
+
+</head>
+<body>
+<div id="panelini" class="panelini" >
+ <div id="divtitulo" class="divtitulo"> <label id="lbltitulo" class="lbltitulo">  </label>  </div>
+        <div id="sc-HeaderTop">  <!--BEGIN TOP-->
+                 <div id="jv-mainmenu"><!--BEGIN MAIN MENU-->
+                  <ul id="navigation" class="nav-main">
+                        <li><a onClick="salir()"       href="#">INICIO</a></li>
+                        <li><a href="{% url 'menu' %}" href="#">MENU-INICIAL</a></li>
+                  </ul>
+                 </div>
+         </div>
+</div>
+</div>     
+    
+</body>
+</html>

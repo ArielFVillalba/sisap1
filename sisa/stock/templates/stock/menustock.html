@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% csrf_token %}
+{% load static %}
+
+<html lang="en">
+<head>
+<script src="{% static '/inicio/js/principal.js' %}"></script>
+<link rel="stylesheet" href="{% static '/stock/stock/menustock.css' %}">
+<script src="{% static '/stock/stock/menustock.js' %}"></script>
+</head>
+<body onload="actelementos()">
+
+
+
+ <div class="contenedor-menu-cat">
+ <ul class="menu-cat">
+
+  <li><a class ="atexttit" href="#"onclick="seleccab();">STOCK</a>  <ul class="menu-cat">
+  <li><a href="{% url 'articulos_cargar' pk_token=0 %}" >articulos</a> </li>
+ <li><a href="{% url 'deposito' %}" >deposito</a> </li>
+ <li><a href="{% url 'movdepcab_cargar' pk_token=0 %}" >mov stock</a> </li>
+
+ </ul>
+ </li>
+  <li><a class ="atexttit"  href="#"onclick="seleccab();">Informes</a> <ul class="menu-cat">
+ <li><a href="{% url 'stock' %}" > informe stock</a> </li>
+ <li><a href="{% url 'movdepcabinf' %}" > informe mov. deposito</a> </li>
+
+ </ul></li>
+
+ </ul> </div>
+</body>
+</html>
+{% endblock %}
